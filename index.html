@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>France TechBug</title>
+
+<style>
+
+body{
+background:black;
+color:#00ff9c;
+font-family:monospace;
+margin:0;
+overflow:hidden;
+}
+
+/* BOOT SCREEN */
+#boot{
+position:absolute;
+width:100%;
+height:100vh;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+#boot p{
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+0%{opacity:1;}
+50%{opacity:0;}
+100%{opacity:1;}
+}
+
+/* LOGIN */
+#login{
+display:none;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+input{
+padding:10px;
+background:black;
+border:1px solid #00ff9c;
+color:#00ff9c;
+}
+
+button{
+padding:10px;
+margin-top:10px;
+background:#00ff9c;
+border:none;
+}
+
+/* DASHBOARD */
+#dashboard{
+display:none;
+padding:20px;
+}
+
+.terminal{
+background:#020202;
+padding:20px;
+height:300px;
+overflow:auto;
+border:1px solid #00ff9c;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BOOT -->
+<div id="boot">
+<h2>Initializing System...</h2>
+<p>Loading France TechBug...</p>
+</div>
+
+<!-- LOGIN -->
+<div id="login">
+<h2>ACCESS REQUIRED</h2>
+<input type="password" id="pass" placeholder="Enter password">
+<button onclick="login()">ENTER</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+<h1>🔥 France TechBug System</h1>
+
+<div class="terminal" id="terminal"></div>
+
+</div>
+
+<script>
+
+/* BOOT SCREEN */
+setTimeout(()=>{
+document.getElementById("boot").style.display="none";
+document.getElementById("login").style.display="flex";
+},3000);
+
+/* LOGIN */
+function login(){
+let p = document.getElementById("pass").value;
+
+if(p === "France king"){
+document.getElementById("login").style.display="none";
+document.getElementById("dashboard").style.display="block";
+startHack();
+}else{
+alert("ACCESS DENIED");
+}
+}
+
+/* TERMINAL EFFECT */
+let lines = [
+"Connecting to secure server...",
+"Bypassing firewall...",
+"Access granted ✔",
+"Loading tools...",
+"System online 🟢",
+"Welcome France 👑"
+];
+
+let i = 0;
+
+function startHack(){
+let term = document.getElementById("terminal");
+
+let interval = setInterval(()=>{
+if(i < lines.length){
+term.innerHTML += "> " + lines[i] + "<br>";
+term.scrollTop = term.scrollHeight;
+i++;
+}else{
+clearInterval(interval);
+}
+},800);
+}
+
+</script>
+
+</body>
+  </html>
